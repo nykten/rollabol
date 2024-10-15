@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
+    private int count;
 
     private float movementX;
     private float movementY;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent <Rigidbody>();
+        count = 0;
     }
 
     // Update is called once per frame
@@ -33,5 +35,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
+    }
+
+    private OnTrigger(){
+        count += 1;
     }
 }
