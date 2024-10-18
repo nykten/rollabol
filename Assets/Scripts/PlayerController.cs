@@ -38,12 +38,19 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-    if (other.gameObject.CompareTag("PickUp")){
+        if (other.gameObject.CompareTag("PickUp")){
             other.gameObject.SetActive(false);
             Debug.Log("tag!");
             count = count+ 1;
             SetCountText();
         }
+
+        if (other.gameObject.CompareTag("Enemy")){
+            Destroy(gameObject);
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.GetComponent<TextMeshProUGUI> ().text = "You Lose!";
+        }
+    
     }
 
     void SetCountText(){
@@ -55,11 +62,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollissionEnter(Collision collision){
-        if (collision.gameObject.CompareTag("Enemy")){
-            Destroy(gameObject);
-            winTextObject.gameObject.SetActive(true);
-            winTextObject.GetComponent<TextMeshProUGUI> ().text = "You Lose!";
-        }
-    }
+    // private void OnCollissionEnter(Collision collision){
+    //     if (collision.gameObject.CompareTag("Enemy")){
+    //         Destroy(gameObject);
+
+    //     }
+    // }
 }
