@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy")){
             Destroy(gameObject);
             winTextObject.gameObject.SetActive(true);
-            winTextObject.GetComponent<TextMeshProUGUI> ().text = "You Lose!";
+            winTextObject.GetComponentInChildren<TextMeshProUGUI> ().text = "You Lose!";
         }
     
     }
